@@ -18,26 +18,6 @@ email = Location(564, 1316)
 loginid = Location(550, 924)
 password = Location(536, 681)
 
------- 1 -----
-touchList[index] = {"click", toprt}
-waitList[index] = 1.463000
-index = index + 1
-
------- 2 -----
-touchList[index] = {"click", gems}
-waitList[index] = 1.678000
-index = index + 1
-
------- 3 -----
-touchList[index] = {"click", back}
-waitList[index] = 1.549000
-index = index + 1
-
------- 4 -----
-touchList[index] = {"click", bottom}
-waitList[index] = 1.549000
-index = index + 1
-
 ------ 5 -----
 touchList[index] = {"click", profile}
 waitList[index] = 1.549000
