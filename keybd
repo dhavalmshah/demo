@@ -71,25 +71,25 @@ capskeybd["M"] = Location(870, 1854)
 numkeyon = false
 capson = false
 
-function turnnumkey(on) {
+function turnnumkey(on)
     if numkeyon ~= on then
       click(regkey["SPL123"])
       numkeyon = on
     end
-}
+end
 
-function turncapskey(on) {
+function turncapskey(on)
     if capson ~= on then
       click(regkey["SPLCAPS"])
       capson = on
     end
-}
+end
 
 function typekey(keyloc, numkeyon, capskeyon) {
 	turnnumkey(numkeyon)
 	turncapskey(capskeyon)
 	click(keyloc)
-}
+end
 
 function typeStringOnKbd(str, pos)
   pos = pos or 1
