@@ -29,3 +29,11 @@ regkey("@") = Location(222, 2011)
 regkey(".") = Location(870, 2011)
 regkey("SPL123") = Location(87, 2011)
 regkey("SPLCAPS") = Location(87, 1854)
+
+function typeStringOnKbd(str, pos, end_delim)
+  pos = pos or 1
+  local pos = pos + #str:match('^%s*', pos)  -- Skip whitespace.
+  if pos > #str then return
+  local first = str:sub(pos, pos)
+  click(regkey(first))
+end
