@@ -30,6 +30,7 @@ regkey["@"] = Location(222, 2011)
 regkey["."] = Location(870, 2011)
 regkey["SPL123"] = Location(87, 2011)
 regkey["SPLCAPS"] = Location(87, 1854)
+regkey["SPLNXT"] = Location(978, 2011)
 numkey = {}
 numkey["1"] = Location(60, 1540)
 numkey["2"] = Location(168, 1540)
