@@ -85,7 +85,7 @@ function turncapskey(on)
     end
 end
 
-function typekey(keyloc, numkeyon, capskeyon) {
+function typekey(keyloc, numkeyon, capskeyon) 
 	turnnumkey(numkeyon)
 	turncapskey(capskeyon)
 	click(keyloc)
