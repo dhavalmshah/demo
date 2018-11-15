@@ -1,4 +1,3 @@
-
 regkey = {}
 regkey["q"] = Location(60, 1540)
 regkey["w"] = Location(168, 1540)
@@ -42,26 +41,67 @@ numkey["7"] = Location(708, 1540)
 numkey["8"] = Location(816, 1540)
 numkey["9"] = Location(924, 1540)
 numkey["0"] = Location(1032, 1540)
+capskeybd = {}
+capskeybd["Q"] = Location(60, 1540)
+capskeybd["W"] = Location(168, 1540)
+capskeybd["E"] = Location(276, 1540)
+capskeybd["R"] = Location(384, 1540)
+capskeybd["T"] = Location(492, 1540)
+capskeybd["Y"] = Location(600, 1540)
+capskeybd["U"] = Location(708, 1540)
+capskeybd["I"] = Location(816, 1540)
+capskeybd["O"] = Location(924, 1540)
+capskeybd["P"] = Location(1032, 1540)
+capskeybd["A"] = Location(114, 1697)
+capskeybd["S"] = Location(222, 1697)
+capskeybd["D"] = Location(330, 1697)
+capskeybd["F"] = Location(438, 1697)
+capskeybd["G"] = Location(546, 1697)
+capskeybd["H"] = Location(654, 1697)
+capskeybd["J"] = Location(762, 1697)
+capskeybd["K"] = Location(870, 1697)
+capskeybd["L"] = Location(978, 1697)
+capskeybd["Z"] = Location(222, 1854)
+capskeybd["X"] = Location(330, 1854)
+capskeybd["C"] = Location(438, 1854)
+capskeybd["V"] = Location(546, 1854)
+capskeybd["B"] = Location(654, 1854)
+capskeybd["N"] = Location(762, 1854)
+capskeybd["M"] = Location(870, 1854)
 numkeyon = false
 capson = false
+
+function turnnumkey(on) {
+    if numkeyon ~= on then
+      click(regkey["SPL123"])
+      numkeyon = on
+    end
+}
+
+function turncapskey(on) {
+    if capson ~= on then
+      click(regkey["SPLCAPS"])
+      capson = on
+    end
+}
+
+function typekey(keyloc, numkeyon, capskeyon) {
+	turnnumkey(numkeyon)
+	turncapskey(capskeyon)
+	click(keyloc)
+}
 
 function typeStringOnKbd(str, pos)
   pos = pos or 1
   local pos = pos + #str:match('^%s*', pos)  -- Skip whitespace.
   if pos > #str then return end
   local first = str:sub(pos, pos)
-  if regkey[first]==nil then
-    if numkeyon == false then
-      click(regkey["SPL123"])
-      numkeyon = true
-    end
-    click(numkey[first])
+  if regkey[first]~=nil then
+	typekey(regkey[first], false, false)
+  elseif capskeybd[first]~=nil then
+	typekey(capskeybd[first], false, true)
   else
-    if numkeyon == true then
-      click(regkey["SPL123"])
-      numkeyon = false
-    end  
-    click(regkey[first])
+	typekey(numkey[first], true, false)
   end
   typeStringOnKbd(str, pos+1)
 end
