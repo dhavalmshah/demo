@@ -50,7 +50,7 @@ waitList[index] = 1.549000
 index = index + 1
 
 ------ 10 -----
-touchList[index] = {"click", qkey}
+touchList[index] = {"typeStringOnKbd", "kapkool@cpulv.in"}
 waitList[index] = 1.549000
 index = index + 1
 
