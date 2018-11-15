@@ -17,6 +17,7 @@ switch = Location(564, 1055)
 email = Location(564, 1316)
 loginid = Location(550, 924)
 password = Location(536, 681)
+qkey = Location(60,1540)
 
 ------ 5 -----
 touchList[index] = {"click", profile}
@@ -45,6 +46,11 @@ index = index + 1
 
 ------ 10 -----
 touchList[index] = {"click", loginid}
+waitList[index] = 1.549000
+index = index + 1
+
+------ 10 -----
+touchList[index] = {"click", qkey}
 waitList[index] = 1.549000
 index = index + 1
 
