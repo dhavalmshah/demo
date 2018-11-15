@@ -1,39 +1,66 @@
-regkey = {}
-regkey("q") = Location(60, 1540)
-regkey("w") = Location(168, 1540)
-regkey("e") = Location(276, 1540)
-regkey("r") = Location(384, 1540)
-regkey("t") = Location(492, 1540)
-regkey("y") = Location(600, 1540)
-regkey("u") = Location(708, 1540)
-regkey("i") = Location(816, 1540)
-regkey("o") = Location(924, 1540)
-regkey("p") = Location(1032, 1540)
-regkey("a") = Location(114, 1697)
-regkey("s") = Location(222, 1697)
-regkey("d") = Location(330, 1697)
-regkey("f") = Location(438, 1697)
-regkey("g") = Location(546, 1697)
-regkey("h") = Location(654, 1697)
-regkey("j") = Location(762, 1697)
-regkey("k") = Location(870, 1697)
-regkey("l") = Location(978, 1697)
-regkey("z") = Location(222, 1854)
-regkey("x") = Location(330, 1854)
-regkey("c") = Location(438, 1854)
-regkey("v") = Location(546, 1854)
-regkey("b") = Location(654, 1854)
-regkey("n") = Location(762, 1854)
-regkey("m") = Location(870, 1854)
-regkey("@") = Location(222, 2011)
-regkey(".") = Location(870, 2011)
-regkey("SPL123") = Location(87, 2011)
-regkey("SPLCAPS") = Location(87, 1854)
 
-function typeStringOnKbd(str)
+regkey = {}
+regkey["q"] = Location(60, 1540)
+regkey["w"] = Location(168, 1540)
+regkey["e"] = Location(276, 1540)
+regkey["r"] = Location(384, 1540)
+regkey["t"] = Location(492, 1540)
+regkey["y"] = Location(600, 1540)
+regkey["u"] = Location(708, 1540)
+regkey["i"] = Location(816, 1540)
+regkey["o"] = Location(924, 1540)
+regkey["p"] = Location(1032, 1540)
+regkey["a"] = Location(114, 1697)
+regkey["s"] = Location(222, 1697)
+regkey["d"] = Location(330, 1697)
+regkey["f"] = Location(438, 1697)
+regkey["g"] = Location(546, 1697)
+regkey["h"] = Location(654, 1697)
+regkey["j"] = Location(762, 1697)
+regkey["k"] = Location(870, 1697)
+regkey["l"] = Location(978, 1697)
+regkey["z"] = Location(222, 1854)
+regkey["x"] = Location(330, 1854)
+regkey["c"] = Location(438, 1854)
+regkey["v"] = Location(546, 1854)
+regkey["b"] = Location(654, 1854)
+regkey["n"] = Location(762, 1854)
+regkey["m"] = Location(870, 1854)
+regkey["@"] = Location(222, 2011)
+regkey["."] = Location(870, 2011)
+regkey["SPL123"] = Location(87, 2011)
+regkey["SPLCAPS"] = Location(87, 1854)
+numkey = {}
+numkey["1"] = Location(60, 1540)
+numkey["2"] = Location(168, 1540)
+numkey["3"] = Location(276, 1540)
+numkey["4"] = Location(384, 1540)
+numkey["5"] = Location(492, 1540)
+numkey["6"] = Location(600, 1540)
+numkey["7"] = Location(708, 1540)
+numkey["8"] = Location(816, 1540)
+numkey["9"] = Location(924, 1540)
+numkey["0"] = Location(1032, 1540)
+numkeyon = false
+capson = false
+
+function typeStringOnKbd(str, pos)
   pos = pos or 1
   local pos = pos + #str:match('^%s*', pos)  -- Skip whitespace.
-  if pos > #str then return
+  if pos > #str then return end
   local first = str:sub(pos, pos)
-  click(regkey(first))
+  if regkey[first]==nil then
+    if numkeyon == false then
+      click(regkey["SPL123"])
+      numkeyon = true
+    end
+    click(numkey[first])
+  else
+    if numkeyon == true then
+      click(regkey["SPL123"])
+      numkeyon = false
+    end  
+    click(regkey[first])
+  end
+  typeStringOnKbd(str, pos+1)
 end
