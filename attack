@@ -1,0 +1,50 @@
+----- created by AnkuLua record script ------
+immersive = true
+setImmersiveMode(immersive)
+scriptDimension = 1080
+Settings:setScriptDimension(true, scriptDimension)
+local index = 1
+touchList = {}
+waitList = {}
+toprt = Location(1018, 59)
+gems = Location(1009, 67)
+back = Location(110, 67)
+bottom = Location(114, 2134)
+profile = Location(95, 143)
+bottomrt = Location(1009, 2134)
+account = Location(187, 478)
+switch = Location(564, 1055)
+email = Location(564, 1316)
+loginid = Location(550, 924)
+password = Location(536, 681)
+qkey = Location(60,1540)
+fastpick = Location(400, 2130)
+dispatch = Location(800, 2130)
+center = Location(569, 1143)
+swipetrebto = Location(1003, 1931)
+swipetrebfrom = Location(457, 1931)
+
+------ 1 -----
+touchList[index] = {"click", center}
+waitList[index] = 1
+index = index + 1
+
+------ 2 -----
+touchList[index] = {"waitForImage", "2.png"}
+waitList[index] = 1
+index = index + 1
+
+------ 3 -----
+touchList[index] = {"click", fastpick}
+waitList[index] = 1
+index = index + 1
+
+------ 5 -----
+touchList[index] = {"swipe", swipetrebfrom, swipetrebto}
+waitList[index] = 1
+index = index + 1
+
+------ 6 -----
+touchList[index] = {"click", dispatch}
+waitList[index] = 1
+index = index + 1
